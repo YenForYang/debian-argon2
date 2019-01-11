@@ -1,0 +1,442 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package argon2
+dpkg-buildpackage: info: source version 0~20171227-1
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: source changed by Ondřej Nový <onovy@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/dev/shm/argon/argon2'
+dh_auto_clean
+	make -j1 clean
+make[2]: Entering directory '/dev/shm/argon/argon2'
+Building without optimizations
+rm -f argon2 bench genkat
+rm -f libargon2.so.1 libargon2.a kat-argon2*
+rm -f testcase
+rm -rf *.dSYM
+cd src/ && rm -f *.o
+cd src/blake2/ && rm -f *.o
+cd kats/ &&  rm -f kat-* diff* run_* make_*
+make[2]: Leaving directory '/dev/shm/argon/argon2'
+rm libargon2.so.1.udeb
+make[1]: Leaving directory '/dev/shm/argon/argon2'
+   dh_clean
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f debian/argon2.debhelper.log debian/libargon2-0.debhelper.log debian/libargon2-1-udeb.debhelper.log debian/libargon2-1.debhelper.log debian/libargon2-dev.debhelper.log
+	rm -f -- debian/libargon2-dev.substvars debian/libargon2-0.substvars debian/libargon2-1.substvars debian/argon2.substvars debian/libargon2-1-udeb.substvars debian/files
+	rm -fr -- debian/libargon2-dev/ debian/tmp/ debian/libargon2-0/ debian/libargon2-1/ debian/argon2/ debian/libargon2-1-udeb/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=2085255068 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build
+   dh_update_autotools_config
+   dh_auto_configure
+   debian/rules override_dh_auto_build
+make[1]: Entering directory '/dev/shm/argon/argon2'
+dh_auto_build -- NO_THREADS=1
+	make -j1 NO_THREADS=1
+make[2]: Entering directory '/dev/shm/argon/argon2'
+Building without optimizations
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS  src/argon2.c src/core.c src/blake2/blake2b.c src/thread.c src/encoding.c src/ref.c src/run.c -o argon2
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -shared -fPIC -fvisibility=hidden -DA2_VISCTL=1  -Wl,-soname,libargon2.so.1 src/argon2.c src/core.c src/blake2/blake2b.c src/thread.c src/encoding.c src/ref.c -o libargon2.so.1
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -Wdate-time -D_FORTIFY_SOURCE=2  -c -o src/argon2.o src/argon2.c
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -Wdate-time -D_FORTIFY_SOURCE=2  -c -o src/core.o src/core.c
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -Wdate-time -D_FORTIFY_SOURCE=2  -c -o src/blake2/blake2b.o src/blake2/blake2b.c
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -Wdate-time -D_FORTIFY_SOURCE=2  -c -o src/thread.o src/thread.c
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -Wdate-time -D_FORTIFY_SOURCE=2  -c -o src/encoding.o src/encoding.c
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -DARGON2_NO_THREADS -Wdate-time -D_FORTIFY_SOURCE=2  -c -o src/ref.o src/ref.c
+ar rcs libargon2.a src/argon2.o src/core.o src/blake2/blake2b.o src/thread.o src/encoding.o src/ref.o
+ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[2]: Leaving directory '/dev/shm/argon/argon2'
+mv libargon2.so.1 libargon2.so.1.udeb
+dh_auto_build
+	make -j1
+make[2]: Entering directory '/dev/shm/argon/argon2'
+Building without optimizations
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -pthread -shared -fPIC -fvisibility=hidden -DA2_VISCTL=1  -Wl,-soname,libargon2.so.1 src/argon2.c src/core.c src/blake2/blake2b.c src/thread.c src/encoding.c src/ref.c -o libargon2.so.1
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[2]: Leaving directory '/dev/shm/argon/argon2'
+make[1]: Leaving directory '/dev/shm/argon/argon2'
+   debian/rules override_dh_auto_test
+make[1]: Entering directory '/dev/shm/argon/argon2'
+/usr/bin/make -j1 test
+make[2]: Entering directory '/dev/shm/argon/argon2'
+Building without optimizations
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/argon/argon2=. -Wformat -march=native -pipe -Wformat-security -std=c89 -O3 -Wall -g -Iinclude -Isrc -pthread  -Wextra -Wno-type-limits src/argon2.c src/core.c src/blake2/blake2b.c src/thread.c src/encoding.c src/ref.c src/test.c -o testcase
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11074: Inlining inhibited by limit max-total-size 
+ipo: remark #11076: To get full report use -qopt-report=4 -qopt-report-phase ipo
+ipo: remark #11006: generating object file /tmp/intel/ipo_iccDYomez.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+Default build
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+argon2i v=16: OK
+argon2d v=16: OK
+argon2id v=16: OK
+argon2i v=19: OK
+argon2d v=19: OK
+argon2id v=19: OK
+Force OPTTEST=1
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+argon2i v=16: OK
+argon2d v=16: OK
+argon2id v=16: OK
+argon2i v=19: OK
+argon2d v=19: OK
+argon2id v=19: OK
+./testcase
+Test Argon2i version number: 10
+Hash test: $v=16 t=2, m=16, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=16 t=2, m=18, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=16 t=2, m=8, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=16 t=2, m=8, p=2, pass=password, salt=somesalt: PASS
+Hash test: $v=16 t=1, m=16, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=16 t=4, m=16, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=16 t=2, m=16, p=1, pass=differentpassword, salt=somesalt: PASS
+Hash test: $v=16 t=2, m=16, p=1, pass=password, salt=diffsalt: PASS
+Recognise an invalid encoding: PASS
+Recognise an invalid encoding: PASS
+Recognise an invalid salt in encoding: PASS
+Verify with mismatched password: PASS
+Decode an error message: PASS
+
+Test Argon2i version number: 13
+Hash test: $v=19 t=2, m=16, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=19 t=2, m=18, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=19 t=2, m=8, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=19 t=2, m=8, p=2, pass=password, salt=somesalt: PASS
+Hash test: $v=19 t=1, m=16, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=19 t=4, m=16, p=1, pass=password, salt=somesalt: PASS
+Hash test: $v=19 t=2, m=16, p=1, pass=differentpassword, salt=somesalt: PASS
+Hash test: $v=19 t=2, m=16, p=1, pass=password, salt=diffsalt: PASS
+Recognise an invalid encoding: PASS
+Recognise an invalid encoding: PASS
+Recognise an invalid salt in encoding: PASS
+Verify with mismatched password: PASS
+Decode an error message: PASS
+
+Common error state tests
+Fail on invalid memory: PASS
+Fail on invalid null pointer: PASS
+Fail on salt too short: PASS
+make[2]: Leaving directory '/dev/shm/argon/argon2'
+make[1]: Leaving directory '/dev/shm/argon/argon2'
+ fakeroot debian/rules binary
+dh binary
+   dh_testroot
+   dh_prep
+	rm -f -- debian/libargon2-dev.substvars debian/libargon2-0.substvars debian/libargon2-1.substvars debian/argon2.substvars debian/libargon2-1-udeb.substvars
+	rm -fr -- debian/.debhelper/generated/libargon2-dev/ debian/libargon2-dev/ debian/tmp/ debian/.debhelper/generated/libargon2-0/ debian/libargon2-0/ debian/.debhelper/generated/libargon2-1/ debian/libargon2-1/ debian/.debhelper/generated/argon2/ debian/argon2/ debian/.debhelper/generated/libargon2-1-udeb/ debian/libargon2-1-udeb/
+   dh_auto_install
+	install -d debian/libargon2-dev debian/libargon2-0 debian/libargon2-1 debian/argon2 debian/libargon2-1-udeb
+	make -j1 install DESTDIR=/dev/shm/argon/argon2/debian/tmp AM_UPDATE_INFO_DIR=no
+make[1]: Entering directory '/dev/shm/argon/argon2'
+Building without optimizations
+install -d /dev/shm/argon/argon2/debian/tmp/usr/include
+install -m 0644 include/argon2.h /dev/shm/argon/argon2/debian/tmp/usr/include
+install -d /dev/shm/argon/argon2/debian/tmp/usr/lib
+install libargon2.so.1 libargon2.a /dev/shm/argon/argon2/debian/tmp/usr/lib
+cd /dev/shm/argon/argon2/debian/tmp/usr/lib && ln -s libargon2.so.1 libargon2.so
+install -d /dev/shm/argon/argon2/debian/tmp/usr/bin
+install argon2 /dev/shm/argon/argon2/debian/tmp/usr/bin
+make[1]: Leaving directory '/dev/shm/argon/argon2'
+   debian/rules override_dh_install
+make[1]: Entering directory '/dev/shm/argon/argon2'
+dh_install
+	install -d debian/libargon2-dev/usr/include
+	cp --reflink=auto -a ./include/argon2.h debian/libargon2-dev/usr/include/
+	install -d debian/libargon2-dev/usr/lib/x86_64-linux-gnu
+	cp --reflink=auto -a ./libargon2.a debian/libargon2-dev/usr/lib/x86_64-linux-gnu/
+	install -d debian/libargon2-dev/usr/lib/x86_64-linux-gnu/pkgconfig
+	cp --reflink=auto -a ./libargon2.pc debian/libargon2-dev/usr/lib/x86_64-linux-gnu/pkgconfig/
+	install -d debian/.debhelper/generated/libargon2-dev
+	install -d debian/.debhelper/generated/libargon2-0
+	install -d debian/libargon2-1/usr/lib/x86_64-linux-gnu/
+	cp --reflink=auto -a ./debian/tmp/dh-exec.XGToqccW/usr/lib/x86_64-linux-gnu/libargon2.so.1 debian/libargon2-1/usr/lib/x86_64-linux-gnu//
+	install -d debian/.debhelper/generated/libargon2-1
+	install -d debian/argon2/usr/bin
+	cp --reflink=auto -a ./argon2 debian/argon2/usr/bin/
+	install -d debian/.debhelper/generated/argon2
+	install -d debian/.debhelper/generated/libargon2-1-udeb
+sed -i '/^## /d' debian/libargon2-dev/usr/lib/x86_64-linux-gnu/pkgconfig/libargon2.pc
+sed -i s/@HOST_MULTIARCH@/x86_64-linux-gnu/ debian/libargon2-dev/usr/lib/x86_64-linux-gnu/pkgconfig/libargon2.pc
+sed -i s/@UPSTREAM_VER@/20171227/ debian/libargon2-dev/usr/lib/x86_64-linux-gnu/pkgconfig/libargon2.pc
+install -D libargon2.so.1.udeb debian/libargon2-1-udeb/usr/lib/x86_64-linux-gnu/libargon2.so.1
+make[1]: Leaving directory '/dev/shm/argon/argon2'
+   dh_installdocs
+	install -d debian/libargon2-dev/usr/share/doc/libargon2-dev
+	install -p -m0644 debian/copyright debian/libargon2-dev/usr/share/doc/libargon2-dev/copyright
+	install -d debian/libargon2-0/usr/share/doc/libargon2-0
+	install -p -m0644 debian/copyright debian/libargon2-0/usr/share/doc/libargon2-0/copyright
+	install -d debian/libargon2-1/usr/share/doc/libargon2-1
+	install -p -m0644 debian/copyright debian/libargon2-1/usr/share/doc/libargon2-1/copyright
+	install -d debian/argon2/usr/share/doc/argon2
+	install -p -m0644 debian/copyright debian/argon2/usr/share/doc/argon2/copyright
+   dh_installchangelogs
+	install -p -m0644 debian/changelog debian/libargon2-dev/usr/share/doc/libargon2-dev/changelog.Debian
+	install -p -m0644 ./CHANGELOG.md debian/libargon2-dev/usr/share/doc/libargon2-dev/changelog
+	install -p -m0644 debian/changelog debian/libargon2-1/usr/share/doc/libargon2-1/changelog.Debian
+	install -p -m0644 ./CHANGELOG.md debian/libargon2-1/usr/share/doc/libargon2-1/changelog
+	install -p -m0644 debian/changelog debian/libargon2-0/usr/share/doc/libargon2-0/changelog.Debian
+	install -p -m0644 ./CHANGELOG.md debian/libargon2-0/usr/share/doc/libargon2-0/changelog
+	install -p -m0644 debian/changelog debian/argon2/usr/share/doc/argon2/changelog.Debian
+	install -p -m0644 ./CHANGELOG.md debian/argon2/usr/share/doc/argon2/changelog
+   dh_installman
+   dh_perl
+   dh_link
+	rm -f debian/libargon2-dev/usr/lib/x86_64-linux-gnu/libargon2.so
+	ln -s libargon2.so.1 debian/libargon2-dev/usr/lib/x86_64-linux-gnu/libargon2.so
+	install -d debian/libargon2-0/usr/lib/x86_64-linux-gnu
+	rm -f debian/libargon2-0/usr/lib/x86_64-linux-gnu/libargon2.so.0
+	ln -s libargon2.so.1 debian/libargon2-0/usr/lib/x86_64-linux-gnu/libargon2.so.0
+   dh_strip_nondeterminism
+   dh_compress
+	cd debian/libargon2-dev
+	cd debian/libargon2-0
+	cd debian/libargon2-1
+	cd debian/argon2
+	cd debian/libargon2-1-udeb
+	chmod a-x usr/share/doc/libargon2-dev/changelog usr/share/doc/libargon2-dev/changelog.Debian
+	chmod a-x usr/share/doc/libargon2-0/changelog usr/share/doc/libargon2-0/changelog.Debian
+	cd '/dev/shm/argon/argon2'
+	chmod a-x usr/share/doc/libargon2-1/changelog usr/share/doc/libargon2-1/changelog.Debian
+	gzip -9nf usr/share/doc/libargon2-dev/changelog usr/share/doc/libargon2-dev/changelog.Debian
+	chmod a-x usr/share/doc/argon2/changelog usr/share/doc/argon2/changelog.Debian
+	gzip -9nf usr/share/doc/libargon2-0/changelog usr/share/doc/libargon2-0/changelog.Debian
+	gzip -9nf usr/share/doc/libargon2-1/changelog usr/share/doc/libargon2-1/changelog.Debian
+	gzip -9nf usr/share/doc/argon2/changelog usr/share/doc/argon2/changelog.Debian
+	cd '/dev/shm/argon/argon2'
+	cd '/dev/shm/argon/argon2'
+	cd '/dev/shm/argon/argon2'
+	cd '/dev/shm/argon/argon2'
+   dh_fixperms
+	find debian/libargon2-dev -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libargon2-0 -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/argon2 -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libargon2-1-udeb -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libargon2-1 -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libargon2-dev ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/libargon2-0 ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/libargon2-1 ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/libargon2-1-udeb ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/argon2 ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/libargon2-dev/usr/share/doc -type f -a -true -a ! -regex 'debian/libargon2-dev/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-0/usr/share/doc -type f -a -true -a ! -regex 'debian/libargon2-0/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-1-udeb -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-1/usr/share/doc -type f -a -true -a ! -regex 'debian/libargon2-1/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/argon2/usr/share/doc -type f -a -true -a ! -regex 'debian/argon2/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-dev/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/libargon2-0/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/argon2/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/libargon2-1-udeb/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/libargon2-1/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/libargon2-dev/usr/include -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-0 -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/argon2 -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-1 -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libargon2-0/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/libargon2-dev -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/argon2/usr/bin -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/libargon2-1/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/libargon2-dev/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+   dh_missing
+   dh_strip
+	strip --strip-debug --remove-section=.comment --remove-section=.note --enable-deterministic-archives debian/libargon2-dev/usr/lib/x86_64-linux-gnu/libargon2.a
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	strip --remove-section=.comment --remove-section=.note --strip-unneeded debian/libargon2-1-udeb/usr/lib/x86_64-linux-gnu/libargon2.so.1
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/argon2/dbgsym-root/usr/lib/debug/.build-id/d3
+	objcopy --only-keep-debug --compress-debug-sections debian/argon2/usr/bin/argon2 debian/.debhelper/argon2/dbgsym-root/usr/lib/debug/.build-id/d3/4dcce345f543ac1d66ef8ec408e710058039fc.debug
+	install -d debian/.debhelper/libargon2-1/dbgsym-root/usr/lib/debug/.build-id/94
+	objcopy --only-keep-debug --compress-debug-sections debian/libargon2-1/usr/lib/x86_64-linux-gnu/libargon2.so.1 debian/.debhelper/libargon2-1/dbgsym-root/usr/lib/debug/.build-id/94/dcb48389bc4e86713a27d02411846033eb3f85.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/argon2/dbgsym-root/usr/lib/debug/.build-id/d3/4dcce345f543ac1d66ef8ec408e710058039fc.debug
+	chown 0:0 -- debian/.debhelper/argon2/dbgsym-root/usr/lib/debug/.build-id/d3/4dcce345f543ac1d66ef8ec408e710058039fc.debug
+	strip --remove-section=.comment --remove-section=.note debian/argon2/usr/bin/argon2
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/argon2/dbgsym-root/usr/lib/debug/.build-id/d3/4dcce345f543ac1d66ef8ec408e710058039fc.debug debian/argon2/usr/bin/argon2
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/argon2/dbgsym-root/usr/share/doc
+	ln -s argon2 debian/.debhelper/argon2/dbgsym-root/usr/share/doc/argon2-dbgsym
+	chmod 0644 -- debian/.debhelper/libargon2-1/dbgsym-root/usr/lib/debug/.build-id/94/dcb48389bc4e86713a27d02411846033eb3f85.debug
+	chown 0:0 -- debian/.debhelper/libargon2-1/dbgsym-root/usr/lib/debug/.build-id/94/dcb48389bc4e86713a27d02411846033eb3f85.debug
+	strip --remove-section=.comment --remove-section=.note --strip-unneeded debian/libargon2-1/usr/lib/x86_64-linux-gnu/libargon2.so.1
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/libargon2-1/dbgsym-root/usr/lib/debug/.build-id/94/dcb48389bc4e86713a27d02411846033eb3f85.debug debian/libargon2-1/usr/lib/x86_64-linux-gnu/libargon2.so.1
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/libargon2-1/dbgsym-root/usr/share/doc
+	ln -s libargon2-1 debian/.debhelper/libargon2-1/dbgsym-root/usr/share/doc/libargon2-1-dbgsym
+   debian/rules override_dh_makeshlibs
+make[1]: Entering directory '/dev/shm/argon/argon2'
+dh_makeshlibs -V --add-udeb="libargon2-1-udeb"
+	rm -f debian/libargon2-dev/DEBIAN/shlibs
+	rm -f debian/libargon2-0/DEBIAN/shlibs
+	rm -f debian/libargon2-1/DEBIAN/shlibs
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/libargon2-1/DEBIAN
+	echo "libargon2 1 libargon2-1 (>= 0~20171227)" >> debian/libargon2-1/DEBIAN/shlibs
+	echo "udeb: libargon2 1 libargon2-1-udeb (>= 0~20171227)" >> debian/libargon2-1/DEBIAN/shlibs
+	chmod 0644 -- debian/libargon2-1/DEBIAN/shlibs
+	chown 0:0 -- debian/libargon2-1/DEBIAN/shlibs
+	dpkg-gensymbols -plibargon2-1 -Idebian/libargon2-1.symbols -Pdebian/libargon2-1 -edebian/libargon2-1/usr/lib/x86_64-linux-gnu/libargon2.so.1
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-gensymbols: warning: some new symbols appeared in the symbols file: see diff output below
+dpkg-gensymbols: warning: debian/libargon2-1/DEBIAN/symbols doesn't match completely debian/libargon2-1.symbols
+--- debian/libargon2-1.symbols (libargon2-1_0~20171227-1_amd64)
++++ dpkg-gensymbols0gj8w1	2019-01-11 08:05:11.892185833 +0100
+@@ -1,4 +1,18 @@
+ libargon2.so.1 libargon2-1 #MINVER#
++ __cacheSize@Base 0~20171227-1
++ __intel_avx_rep_memset@Base 0~20171227-1
++ __intel_memset@Base 0~20171227-1
++ __intel_mic_avx512f_memset@Base 0~20171227-1
++ __intel_new_memset@Base 0~20171227-1
++ __intel_sse4_strlen@Base 0~20171227-1
++ __intel_sse4_strncmp@Base 0~20171227-1
++ __intel_ssse3_memcpy@Base 0~20171227-1
++ _intel_fast_memset.A@Base 0~20171227-1
++ _intel_fast_memset.J@Base 0~20171227-1
++ _intel_fast_memset.V@Base 0~20171227-1
++ _intel_fast_memset.Z@Base 0~20171227-1
++ _intel_fast_memset.a@Base 0~20171227-1
++ _intel_fast_memset@Base 0~20171227-1
+  argon2_ctx@Base 0~20171227
+  argon2_encodedlen@Base 0~20171227
+  argon2_error_message@Base 0~20171227
+	mv debian/.debhelper/generated/libargon2-1/triggers.new debian/.debhelper/generated/libargon2-1/triggers
+	rm -f debian/argon2/DEBIAN/shlibs
+make[1]: Leaving directory '/dev/shm/argon/argon2'
+   dh_shlibdeps
+	dpkg-shlibdeps -Tdebian/libargon2-1.substvars debian/libargon2-1/usr/lib/x86_64-linux-gnu/libargon2.so.1
+	install -d debian/argon2/DEBIAN
+	dpkg-shlibdeps -Tdebian/argon2.substvars debian/argon2/usr/bin/argon2
+	install -d debian/libargon2-1-udeb/DEBIAN
+	dpkg-shlibdeps -Tdebian/libargon2-1-udeb.substvars -tudeb debian/libargon2-1-udeb/usr/lib/x86_64-linux-gnu/libargon2.so.1
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+   dh_installdeb
+	install -d debian/libargon2-dev/DEBIAN
+	install -d debian/libargon2-0/DEBIAN
+	install -p -m0644 debian/.debhelper/generated/libargon2-1/triggers debian/libargon2-1/DEBIAN/triggers
+   dh_gencontrol
+	echo misc:Depends= >> debian/libargon2-dev.substvars
+	echo misc:Pre-Depends= >> debian/libargon2-dev.substvars
+	dpkg-gencontrol -plibargon2-dev -ldebian/changelog -Tdebian/libargon2-dev.substvars -Pdebian/libargon2-dev
+	echo misc:Depends= >> debian/libargon2-0.substvars
+	echo misc:Pre-Depends= >> debian/libargon2-0.substvars
+	dpkg-gencontrol -plibargon2-0 -ldebian/changelog -Tdebian/libargon2-0.substvars -Pdebian/libargon2-0
+	echo misc:Depends= >> debian/libargon2-1-udeb.substvars
+	echo misc:Pre-Depends= >> debian/libargon2-1-udeb.substvars
+	dpkg-gencontrol -plibargon2-1-udeb -ldebian/changelog -Tdebian/libargon2-1-udeb.substvars -Pdebian/libargon2-1-udeb
+	echo misc:Depends= >> debian/libargon2-1.substvars
+	echo misc:Pre-Depends= >> debian/libargon2-1.substvars
+	install -d debian/.debhelper/libargon2-1/dbgsym-root/DEBIAN
+	dpkg-gencontrol -plibargon2-1 -ldebian/changelog -Tdebian/libargon2-1.substvars -Pdebian/.debhelper/libargon2-1/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=libargon2-1-dbgsym "-DDepends=libargon2-1 (= \${binary:Version})" "-DDescription=debug symbols for libargon2-1" -DBuild-Ids=94dcb48389bc4e86713a27d02411846033eb3f85 -DSection=debug -UReplaces -UBreaks
+	echo misc:Depends= >> debian/argon2.substvars
+	echo misc:Pre-Depends= >> debian/argon2.substvars
+	install -d debian/.debhelper/argon2/dbgsym-root/DEBIAN
+	dpkg-gencontrol -pargon2 -ldebian/changelog -Tdebian/argon2.substvars -Pdebian/.debhelper/argon2/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=argon2-dbgsym "-DDepends=argon2 (= \${binary:Version})" "-DDescription=debug symbols for argon2" -DBuild-Ids=d34dcce345f543ac1d66ef8ec408e710058039fc -DSection=debug -UMulti-Arch -UReplaces -UBreaks
+	chmod 0644 -- debian/libargon2-0/DEBIAN/control
+	chown 0:0 -- debian/libargon2-0/DEBIAN/control
+	chmod 0644 -- debian/libargon2-1-udeb/DEBIAN/control
+	chown 0:0 -- debian/libargon2-1-udeb/DEBIAN/control
+	chmod 0644 -- debian/libargon2-dev/DEBIAN/control
+	chown 0:0 -- debian/libargon2-dev/DEBIAN/control
+	chmod 0644 -- debian/.debhelper/libargon2-1/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/libargon2-1/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -plibargon2-1 -ldebian/changelog -Tdebian/libargon2-1.substvars -Pdebian/libargon2-1
+	chmod 0644 -- debian/.debhelper/argon2/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/argon2/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -pargon2 -ldebian/changelog -Tdebian/argon2.substvars -Pdebian/argon2
+	chmod 0644 -- debian/libargon2-1/DEBIAN/control
+	chown 0:0 -- debian/libargon2-1/DEBIAN/control
+	chmod 0644 -- debian/argon2/DEBIAN/control
+	chown 0:0 -- debian/argon2/DEBIAN/control
+   dh_md5sums
+	cd debian/libargon2-dev >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/libargon2-1 >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/libargon2-0 >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/argon2 >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/libargon2-0/DEBIAN/md5sums
+	chown 0:0 -- debian/libargon2-0/DEBIAN/md5sums
+	chmod 0644 -- debian/argon2/DEBIAN/md5sums
+	chown 0:0 -- debian/argon2/DEBIAN/md5sums
+	chmod 0644 -- debian/libargon2-1/DEBIAN/md5sums
+	chown 0:0 -- debian/libargon2-1/DEBIAN/md5sums
+	chmod 0644 -- debian/libargon2-dev/DEBIAN/md5sums
+	chown 0:0 -- debian/libargon2-dev/DEBIAN/md5sums
+	cd debian/.debhelper/argon2/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/.debhelper/libargon2-1/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/argon2/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/argon2/dbgsym-root/DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/libargon2-1/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/libargon2-1/dbgsym-root/DEBIAN/md5sums
+   dh_builddeb
+	dpkg-deb --build debian/libargon2-dev ..
+	dpkg-deb --build debian/libargon2-0 ..
+	dpkg-deb --build debian/libargon2-1 ..
+	dpkg-deb --build debian/.debhelper/libargon2-1/dbgsym-root ..
+	dpkg-deb --build debian/argon2 ..
+	dpkg-deb --build debian/.debhelper/argon2/dbgsym-root ..
+dpkg-deb: building package 'libargon2-dev' in '../libargon2-dev_0~20171227-1_amd64.deb'.
+dpkg-deb: building package 'libargon2-0' in '../libargon2-0_0~20171227-1_amd64.deb'.
+dpkg-deb: building package 'libargon2-1-dbgsym' in '../libargon2-1-dbgsym_0~20171227-1_amd64.deb'.
+dpkg-deb: building package 'argon2-dbgsym' in '../argon2-dbgsym_0~20171227-1_amd64.deb'.
+dpkg-deb: building package 'argon2' in '../argon2_0~20171227-1_amd64.deb'.
+dpkg-deb: building package 'libargon2-1' in '../libargon2-1_0~20171227-1_amd64.deb'.
+	install -d debian/.debhelper/scratch-space/build-libargon2-1-udeb
+	dpkg-deb -z6 -Zxz -Sextreme --build debian/libargon2-1-udeb debian/.debhelper/scratch-space/build-libargon2-1-udeb
+dpkg-deb: building package 'libargon2-1-udeb' in 'debian/.debhelper/scratch-space/build-libargon2-1-udeb/libargon2-1-udeb_0~20171227-1_amd64.deb'.
+	Renaming libargon2-1-udeb_0~20171227-1_amd64.deb to libargon2-1-udeb_0~20171227-1_amd64.udeb
+	mv debian/.debhelper/scratch-space/build-libargon2-1-udeb/libargon2-1-udeb_0\~20171227-1_amd64.deb ../libargon2-1-udeb_0\~20171227-1_amd64.udeb
+FAKEROOTKEY=589251204 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../argon2_0~20171227-1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian argon2_0~20171227-1_amd64.changes ...
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: argon2: hardening-no-pie usr/bin/argon2
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: argon2: binary-without-manpage usr/bin/argon2
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+E: libargon2-1: symbols-file-contains-current-version-with-debian-revision on symbol __cacheSize@Base and 13 others
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+Finished running lintian.

@@ -1,0 +1,12 @@
+Package: argon2-dbgsym
+Source: argon2
+Version: 0~20171227-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Luca Bruno <lucab@debian.org>
+Installed-Size: 72
+Depends: argon2 (= 0~20171227-1)
+Section: debug
+Priority: optional
+Description: debug symbols for argon2
+Build-Ids: d34dcce345f543ac1d66ef8ec408e710058039fc

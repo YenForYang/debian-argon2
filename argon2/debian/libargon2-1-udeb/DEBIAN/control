@@ -1,0 +1,24 @@
+Package: libargon2-1-udeb
+Source: argon2
+Version: 0~20171227-1
+Architecture: amd64
+Maintainer: Luca Bruno <lucab@debian.org>
+Installed-Size: 290
+Depends: libc6-udeb (>= 2.28)
+Section: debian-installer
+Priority: optional
+Description: memory-hard hashing function - runtime library (udeb)
+ Argon2 is a password-hashing function that can be used to hash passwords
+ for credential storage, key derivation, or other applications.
+ .
+ There are two main versions of Argon2: Argon2i and Argon2d.
+ Argon2i is the safest against side-channel attacks, while Argon2d provides
+ the highest resistance against GPU cracking attacks.
+ .
+ Argon2i and Argon2d are parametrized by:
+  * A time cost, which defines the amount of computation realized and
+    therefore the execution time, given in number of iterations
+  * A memory cost, which defines the memory usage, given in kibibytes
+  * A parallelism degree, which defines the number of parallel threads
+ .
+ This udeb package includes the dynamic library for the Debian Installer.

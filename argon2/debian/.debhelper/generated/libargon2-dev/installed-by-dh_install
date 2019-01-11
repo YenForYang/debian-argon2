@@ -1,0 +1,3 @@
+./include/argon2.h
+./libargon2.a
+./libargon2.pc

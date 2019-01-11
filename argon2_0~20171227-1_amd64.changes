@@ -1,0 +1,48 @@
+Format: 1.8
+Date: Mon, 01 Oct 2018 10:00:17 +0200
+Source: argon2
+Binary: libargon2-dev libargon2-0 libargon2-1 argon2 libargon2-1-udeb
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: amd64
+Version: 0~20171227-1
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Luca Bruno <lucab@debian.org>
+Changed-By: Ondřej Nový <onovy@debian.org>
+Description:
+ argon2     - memory-hard hashing function - utility
+ libargon2-0 - memory-hard hashing function - runtime library
+ libargon2-1 - memory-hard hashing function - runtime library
+ libargon2-1-udeb - memory-hard hashing function - runtime library (udeb) (udeb)
+ libargon2-dev - memory-hard hashing function - development files
+Changes:
+ argon2 (0~20171227-1) UNRELEASED; urgency=medium
+ .
+   * d/copyright: Use https protocol in Format field
+Checksums-Sha1:
+ dde1661cb9cec6176c9e9aa401696d738451589b 54732 argon2-dbgsym_0~20171227-1_amd64.deb
+ 9838a996c439a362279cda47424dbe4a1da4c021 6832 argon2_0~20171227-1_amd64.buildinfo
+ 8126d747bd02559cacb5d904806264aaee784c38 62808 argon2_0~20171227-1_amd64.deb
+ 294b3a1618daada5cbc8fc60a52a89361326fc48 6064 libargon2-0_0~20171227-1_amd64.deb
+ cb7d8d3d9ba2692efa710b9fb59742bffd344e7f 96036 libargon2-1-dbgsym_0~20171227-1_amd64.deb
+ 8f66beedbb7369b03f40d8732aeda06bb8e04f6a 66848 libargon2-1-udeb_0~20171227-1_amd64.udeb
+ 71c0c38ab6afe169779088df40ddcaabb71238e9 75952 libargon2-1_0~20171227-1_amd64.deb
+ 6db9973e7b59deb6a298871d14e14f685500b0c5 195676 libargon2-dev_0~20171227-1_amd64.deb
+Checksums-Sha256:
+ d990c4ffea579835550e8f6d6c1cc155c2f63e0b733ae06937d44026d03dd0a1 54732 argon2-dbgsym_0~20171227-1_amd64.deb
+ ecd53c94a653afb4211c21e93883d9dca131ac77016179f46776e8691facce2d 6832 argon2_0~20171227-1_amd64.buildinfo
+ 742c8a73efd47aea1bd571ef4b33a041c4f996f9fa1758d4624d36e66e6d3b22 62808 argon2_0~20171227-1_amd64.deb
+ 6f2053cbcc9ed05ab420911c2ae4734ec5b03e1fdfe84c97eb983277d65ba105 6064 libargon2-0_0~20171227-1_amd64.deb
+ e80e7acfe4c7200c1ea3582156c012ad14ff1d433060994b6256687315c2ba0c 96036 libargon2-1-dbgsym_0~20171227-1_amd64.deb
+ 4f39a76b8599cb50fbeacdd6c1413926a3dc670054a13bf211532a16f8543fd0 66848 libargon2-1-udeb_0~20171227-1_amd64.udeb
+ 6c61ce186a379ea32140ce966f2ef0979a64b0934d80ac2550c537792ffa6b3c 75952 libargon2-1_0~20171227-1_amd64.deb
+ 41bd329892340b2f292cc6df2146fbeb7c793225dad8d38e9edd75535ca39ede 195676 libargon2-dev_0~20171227-1_amd64.deb
+Files:
+ cf664e8bb3d91d88a7faa6ed106eb5c1 54732 debug optional argon2-dbgsym_0~20171227-1_amd64.deb
+ 430efd5cfe7a6085811741d7e2cb05a8 6832 libs optional argon2_0~20171227-1_amd64.buildinfo
+ 1f713abbf01d40e4b41f90395ffd1f16 62808 utils optional argon2_0~20171227-1_amd64.deb
+ e4bb4b179ff4057895c37390fc056406 6064 libdevel optional libargon2-0_0~20171227-1_amd64.deb
+ ff2729ac913679e7a9ac8e64817b3f9f 96036 debug optional libargon2-1-dbgsym_0~20171227-1_amd64.deb
+ f1487c3811dac4024b2fc17347bfe1b8 66848 debian-installer optional libargon2-1-udeb_0~20171227-1_amd64.udeb
+ 61c57974f7aa9023df1ff1deb520e241 75952 libs optional libargon2-1_0~20171227-1_amd64.deb
+ 5c273e2e084e925b23353e8f12c9b88f 195676 libdevel optional libargon2-dev_0~20171227-1_amd64.deb

@@ -1,0 +1,13 @@
+Package: libargon2-1-dbgsym
+Source: argon2
+Version: 0~20171227-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Luca Bruno <lucab@debian.org>
+Installed-Size: 112
+Depends: libargon2-1 (= 0~20171227-1)
+Section: debug
+Priority: optional
+Multi-Arch: same
+Description: debug symbols for libargon2-1
+Build-Ids: 94dcb48389bc4e86713a27d02411846033eb3f85
